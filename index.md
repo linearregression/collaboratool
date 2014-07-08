@@ -2,6 +2,12 @@
 layout: default
 title: Overview
 ---
+### What is BCE?
+
+BCE stands for the Berkeley Common (or Compute, or Collaborative...) Environment.
+It is designed to provide a common Linux computational environment for classwork
+and research.
+
 ### Why is the website "Collaboratool?"
 
 "Collaboratool" was conceived as a project for building, integrating, and
@@ -10,18 +16,16 @@ thinking about how to deploy virtualized containers that provide things like
 IPython notebooks through the web. We were very inspired by
 [jiffylab](http://github.com/ptone/jiffylab). From there, we decided that it
 made more sense to focus on a complete virtual environment, which is easy to
-deploy in a variety of contexts, which is what you'll find here now. We call it
-the Berkeley Common (or Compute, or Collaborative...) Environment, or BCE for
-short.
+deploy in a variety of contexts, which is what you'll find here now. 
 
-### BCE (Berkeley Computational Environment) Vision
+### BCE Vision
 
-The goal for the BCE is to provide both the ready-made environments, and also
+The goal for the BCE is to provide both the ready-made environments and also
 the "recipes" or scripts setting up these environments. It should be easy for a
-competent linux user to create recipes for custom tools that might not be
-braodly useful (and thus, not already in BCE).
+competent Linux user to create recipes for custom tools that might not be
+broadly useful (and thus, not already in BCE).
 
-For classwork and research in the sciences at Berkeley, broadly defined to
+BCE is designed for classwork and research in the sciences at Berkeley, broadly defined to
 include social science, life science, physical science, and engineering. Using
 these tools, users can start up a virtual machine (VM) with a standardized Linux
 operating environment containing a set of standard software for scientific
