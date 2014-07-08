@@ -125,7 +125,7 @@ echo "$msg"
 # XXX - Using Packer, we could just put extra scripts in Packer's json config
 # But this needs to be refactored
 # XXX - Also, couldn't we (and shouldn't we) just hard-code a URL?
-RSTUDIO_URL=http://download1.rstudio.org/rstudio-0.98.932-amd64.deb
+RSTUDIO_URL=http://download1.rstudio.org/rstudio-0.98.953-amd64.deb
 
 curl -L -O ${RSTUDIO_URL} && \
 dpkg -i $(basename ${RSTUDIO_URL}) && \
