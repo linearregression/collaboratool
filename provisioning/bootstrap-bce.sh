@@ -138,6 +138,12 @@ pip install --upgrade -r /tmp/python-requirements.txt \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc
 
+msg="BCE: Installing add-on R packages..."
+echo "$msg"
+Rscript -e "pkgs <- scan('/tmp/R-packages.txt', what = 'character'); \
+install.packages(pkgs, repos = 'http://cran.cnr.berkeley.edu')" && \
+echo DONE: $msg || echo FAIL: $msg
+
 msg="BCE: Setting Xfce4 as default X session"
 echo "$msg"
 update-alternatives --set x-session-manager /usr/bin/xfce4-session && \

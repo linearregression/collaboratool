@@ -19,8 +19,13 @@
     },
     {
       "type": "file",
-      "source": "getrstudio",
-      "destination": "/tmp/getrstudio"
+      "source": "python-requirements.txt",
+      "destination": "/tmp/python-requirements.txt"
+    },
+    {
+      "type": "file",
+      "source": "R-packages.txt",
+      "destination": "/tmp/R-packages.txt"
     },
     {
       "type": "shell",
