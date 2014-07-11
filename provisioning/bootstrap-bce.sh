@@ -25,7 +25,7 @@ APT_GET="apt-get -q -y"
 # TODO: Like with python-requirements.txt, this can be moved to a separate file,
 # and installed with apt-get or aptitude:
 # `apt-get/aptitude $(< ubuntu-packages.txt)
-DEBS="${DEBS} curl sqlite3 pandoc r-recommended libjpeg62 fonts-mathjax python-dev python-pip python-setuptools python-gtk2-dev texlive texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-pictures gedit gedit-plugins gedit-developer-plugins gedit-r-plugin gedit-latex-plugin gedit-source-code-browser-plugin rabbitvcs-gedit thunar-vcs-plugin firefox xpdf evince gv libreoffice libyaml-dev libzmq3-dev libssl-dev libxslt1-dev liblzma-dev lightdm xrdp xfce4 xfce4-terminal xubuntu-default-settings default-jre default-jdk thunar-archive-plugin thunar-media-tags-plugin gigolo"
+DEBS="${DEBS} curl libcurl4-gnutls-dev sqlite3 pandoc r-recommended libjpeg62 fonts-mathjax python-dev python-pip python-setuptools python-gtk2-dev texlive texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-pictures gedit gedit-plugins gedit-developer-plugins gedit-r-plugin gedit-latex-plugin gedit-source-code-browser-plugin rabbitvcs-gedit thunar-vcs-plugin firefox xpdf evince gv libreoffice libyaml-dev libzmq3-dev libssl-dev libxslt1-dev liblzma-dev lightdm xrdp xfce4 xfce4-terminal xubuntu-default-settings default-jre default-jdk thunar-archive-plugin thunar-media-tags-plugin gigolo"
 # Maybe also xfce4-mount-plugin? Doesn't seem to fix the problem with
 # not auto-mounting VBox shared folders.
 

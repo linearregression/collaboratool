@@ -14,7 +14,7 @@ For a Virtualbox VM, run:
 
 This creates a virtual machine in the OVA format that can be imported into Virtualbox on Windows, Mac, or UNIX.
 
-To create an Amazon EC2 AMI, run:
+To create an Amazon EC2 AMI, set your Amazon security credentials in 'BCE-14.04-amd64-ec2.json' and then run:
 
     $ BCE_PROVISION=BCE packer build BCE-14.04-amd64-ec2.json
 
