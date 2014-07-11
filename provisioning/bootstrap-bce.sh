@@ -173,6 +173,10 @@ echo "$msg"
 (
   if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
     adduser oski vboxsf
+  elif [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
+    adduser oski --disabled-password
+  else 
+    adduser oski
   fi && \
   # Enable oski to login without a password
   adduser oski nopasswdlogin
