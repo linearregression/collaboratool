@@ -2,23 +2,28 @@
 layout: default
 title: Overview
 ---
+<<<<<<< HEAD
 ### What is BCE?
 
 BCE stands for the Berkeley Common (or Compute, or Collaborative...) Environment.
 It is designed to provide a common Linux computational environment for classwork
 and research.
 
-### Why is the website "Collaboratool?"
+### What is "Collaboratool?"
 
 "Collaboratool" was conceived as a project for building, integrating, and
 deploying tools that support portable, reproducible data science.  We started
 thinking about how to deploy virtualized containers that provide things like
-IPython notebooks through the web. We were very inspired by
+IPython notebooks through the web. We were inspired by
 [jiffylab](http://github.com/ptone/jiffylab). From there, we decided that it
 made more sense to focus on a complete virtual environment, which is easy to
-deploy in a variety of contexts, which is what you'll find here now. 
+deploy in a variety of contexts, which is what you'll find here now.
 
 ### BCE Vision
+
+We've presented on BCE at SciPy2014. Here are
+[slides](https://berkeley.box.com/s/m80jxh3fabbvu93otreh) and [a draft of the
+conference paper](https://berkeley.box.com/s/w424gdjot3tgksidyyfl).
 
 The goal for the BCE is to provide both the ready-made environments and also
 the "recipes" or scripts setting up these environments. It should be easy for a
@@ -36,9 +41,9 @@ communication with and distribution to others.
 
 We envision the following core use cases:
 
-  * creating a common computing environment for a course or workshop,
-  * creating a common computational environment to be shared by a group of researchers or students, and
-  * disseminating the computational environment so outsiders can reproduce the results of a group.
+  - creating a common computing environment for a course or workshop,
+  - creating a common computational environment to be shared by a group of researchers or students, and
+  - disseminating the computational environment so outsiders can reproduce the results of a group.
 
 What problems does BCE solve for you?
 
@@ -51,11 +56,11 @@ What problems does BCE solve for you?
 
 To accomplish this, we envision that BCE will encompass the following:
 
- * a reproducible workflow that creates the standard VM/image
+ - a reproducible workflow that creates the standard VM/image
    with standard scientific computing software such as Python, R, git, etc.,
- * a standard binary image, produced by the workflow, that can be distributed as is and
+ - a standard binary image, produced by the workflow, that can be distributed as is and
    used on-the-fly with VirtualBox or VMWare Player with minimal dependencies, and
- * (possibly) an augmented workflow that represents multiple possible distributions tailored
+ - (possibly) an augmented workflow that represents multiple possible distributions tailored
    for different types of uses (e.g., different disciplines, different
    computational needs, class vs. research use, etc.). This might
    represent either a sequence or a tree of possible VMs.
