@@ -8,12 +8,11 @@ BCE stands for the Berkeley Common (or Compute, or Collaborative...) Environment
 It is designed to provide a common Linux computational environment for classwork
 and research.
 
-
-### BCE Vision
-
 We've presented on BCE at SciPy2014. Here are
 [slides](https://berkeley.box.com/s/m80jxh3fabbvu93otreh) and [a draft of the
 conference paper](https://berkeley.box.com/s/w424gdjot3tgksidyyfl).
+
+### BCE Vision
 
 The goal for the BCE is to provide both the ready-made environments and also
 the "recipes" or scripts setting up these environments. It should be easy for a
