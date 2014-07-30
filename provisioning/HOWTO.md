@@ -20,16 +20,11 @@ To create an Amazon EC2 AMI, set your Amazon security credentials in 'BCE-14.04-
 
 Note that currently when you start up a VM from the resulting AMI, you'll need to first login as the 'ubuntu' user and set up SSH keys for the 'oski' user, which is the user provisioned by BCE.
 
-Creating BCE VMs with Vagrant
-=============================
+Notes/TODO on provisioning
+==========================
 
-For the Vagrant approach, run:
-
-	$ BCE_PROVISION=BCE  vagrant up
-
-When the build is complete, the builder may connect to the VM by running
-"vagrant ssh" or by connecting with an RDP client to port 53389. The default
-username and password for the VM are both "oski".
+I'm still having trouble using the guest additions that are already available
+from the VirtualBox install.
 
 Note that it should be possible to attach the bundled ISO for guest additions
 using something like the following in the JSON "vboxmanage" section:
@@ -56,8 +51,3 @@ Strangely, this DOES work if I execute it during provisioning:
     vboxmanage storageattach "BCE-xubuntu-14.04-amd64" --storagectl "IDE Controller" --port 1 --device 0 --type dvddrive --medium additions
 
 Go figure
-
-Distributing the VM
-===================
-
-... (exporting VirtualBox appliance, boxing to the Vagrant Cloud, etc.)

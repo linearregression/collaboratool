@@ -57,26 +57,6 @@ to produce exactly the following):
           from XFCE's logo.
 
 
-Move to Issue Tracker
----------------------
-
-### Undecided
-
-    - Dav would like to have some git GUI. Thunar and gedit both have git
-      integration but Thunar is pretty weak, gitg seems to be the standard gtk
-      version (thus suitable for unity, LXDE, XFCE...). Need to evaluate Thunar
-      for 14.04 still.
-    - Hiding messages, etc. maybe doesn't fit in with the "glass brick" model
-      where we don't hide the plumbing.
-
-### Future Tasks
-
-    - Investigate box file format to reduce size
-    - Problems with GTK error messages (gedit and firefox at least)
-    - Auto-mount filesystems doesn't work (but `sudo mount -t vboxsf <name>
-      <mountpoint>` works). (Permanent folders do get mounted.)
-    - Get host to guest drag-n-drop working
-
 History
 -------
 
