@@ -61,13 +61,8 @@
     },
     {
       "type": "file",
-      "source": "python-requirements.txt",
-      "destination": "/tmp/python-requirements.txt"
-    },
-    {
-      "type": "file",
-      "source": "R-packages.txt",
-      "destination": "/tmp/R-packages.txt"
+      "source": "packages",
+      "destination": "/tmp/packages"
     },
     {
       "type": "shell",

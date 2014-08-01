@@ -12,22 +12,10 @@ APT_GET="apt-get -q -y"
 # APT_GET="apt-get -qq -y"
 
 
-# XXX - What's this about? Seems not to hold anymore
-# rpy2 20140409: Requires this patch to build. Waiting on next release.
-# https://bitbucket.org/bioinformed/rpy2/commits/c1c9ddf2910cfb68fe56ee4891ed6785a0b8352b
-
-# XXX - currently, you could pass in extra DEBS via the environment.  But I
-# don't know that this is a good feature.
 # XXX - Ryan: "apt-get install foo=1.0.2" can install a specific version of a
 # a package as long as it is available in the repository. But we'd have to
 # ask the *rutter maintainer to keep older packages or setup our own repo to
 # guarantee those packages would be available.
-# TODO: Like with python-requirements.txt, this can be moved to a separate file,
-# and installed with apt-get or aptitude:
-# `apt-get/aptitude $(< ubuntu-packages.txt)
-DEBS="${DEBS} curl libcurl4-gnutls-dev sqlite3 pandoc r-recommended libjpeg62 fonts-mathjax python-dev python-pip python-setuptools python-gtk2-dev texlive texlive-latex-base texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-pictures gedit gedit-plugins gedit-developer-plugins gedit-r-plugin gedit-latex-plugin gedit-source-code-browser-plugin rabbitvcs-gedit thunar-vcs-plugin firefox xpdf evince gv libreoffice libyaml-dev libzmq3-dev libssl-dev libxslt1-dev liblzma-dev lightdm xrdp xfce4 xfce4-terminal xubuntu-default-settings default-jre default-jdk thunar-archive-plugin thunar-media-tags-plugin gigolo"
-# Maybe also xfce4-mount-plugin? Doesn't seem to fix the problem with
-# not auto-mounting VBox shared folders.
 
 msg="BCE: Updating apt cache..."
 echo $msg
@@ -83,17 +71,6 @@ fi
 #    /etc/apt/sources.list.d/cran.list && \
 
 
-msg="BCE: Updating OS..."
-echo "$msg"
-$APT_GET update && \
-DEBIAN_PRIORITY=high DEBIAN_FRONTEND=noninteractive \
-# This is now done via preseed
-# $APT_GET dist-upgrade && \
-echo DONE: $msg  || echo FAIL: $msg
-# etckeeper above fails because there were no changes to /etc. There are hooks
-# where apt upgrades will be committed automatically with etckeeper. So, we
-# should not include the etckeeper step for pure apt steps.
-
 # apt-add-repository is included in software-properties-common which is
 # installed in the "Installing build utilities" step.
 msg="BCE: Installing R PPAs..." echo "$msg"
@@ -104,7 +81,8 @@ apt-add-repository -y ppa:marutter/c2d4u && \
 
 msg="BCE: Installing scientific packages..."
 echo "$msg"
-$APT_GET install ${DEBS} && \
+# This allows us to have comments in the packages file
+$APT_GET install $(grep '^[^#]' /tmp/packages/ubuntu-packages.txt) && \
 $APT_GET clean && \ # help avoid running out of disk space
 echo DONE: $msg  || echo FAIL: $msg
 
@@ -122,9 +100,6 @@ echo DONE: $msg  || echo FAIL: $msg
 # R, RStudio
 msg="BCE: Installing RStudio..."
 echo "$msg"
-# XXX - Using Packer, we could just put extra scripts in Packer's json config
-# But this needs to be refactored
-# XXX - Also, couldn't we (and shouldn't we) just hard-code a URL?
 RSTUDIO_URL=http://download1.rstudio.org/rstudio-0.98.953-amd64.deb
 
 curl -L -O ${RSTUDIO_URL} && \
@@ -133,14 +108,14 @@ dpkg -i $(basename ${RSTUDIO_URL}) && \
 
 msg="BCE: Installing Python modules..."
 echo "$msg"
-pip install --upgrade -r /tmp/python-requirements.txt \
+pip install --upgrade -r /tmp/packages/python-requirements.txt \
     2>/root/pip-err.log | tee /root/pip-out.log && \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc
 
 msg="BCE: Installing add-on R packages..."
 echo "$msg"
-Rscript -e "pkgs <- scan('/tmp/R-packages.txt', what = 'character'); \
+Rscript -e "pkgs <- scan('/tmp/packages/R-packages.txt', what = 'character'); \
 install.packages(pkgs, repos = 'http://cran.cnr.berkeley.edu')" && \
 echo DONE: $msg || echo FAIL: $msg
 
@@ -196,8 +171,8 @@ sudo -u oski ln -s /media /home/oski/Desktop/Shared && \
 echo DONE: $msg || echo FAIL: $msg
 
 # Automatically login oski at boot
-# XXX - Is there a way to get oski listed in the login screen (it displays guest user
-# if you log out)
+# XXX - Is there a way to get oski listed in the login screen (it displays guest
+# user if you log out)
 
 if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
     msg="BCE: Automatically login oski at boot"
