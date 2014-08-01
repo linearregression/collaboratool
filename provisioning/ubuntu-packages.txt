@@ -1,0 +1,57 @@
+python-dev
+python-pip
+python-setuptools
+python-gtk2-dev
+
+r-recommended
+
+default-jre
+default-jdk
+
+curl
+libcurl4-gnutls-dev
+sqlite3
+libjpeg62
+libyaml-dev
+libzmq3-dev
+libssl-dev
+libxslt1-dev
+liblzma-dev
+
+pandoc
+fonts-mathjax
+texlive
+texlive-latex-base
+texlive-latex-extra
+# This is half a gigabyte
+# texlive-fonts-extra
+texlive-fonts-recommended
+texlive-pictures
+
+gedit
+gedit-plugins
+gedit-developer-plugins
+gedit-r-plugin
+gedit-latex-plugin
+gedit-source-code-browser-plugin
+rabbitvcs-gedit
+
+thunar-vcs-plugin
+thunar-archive-plugin
+thunar-media-tags-plugin
+gigolo
+
+firefox
+libreoffice
+xpdf
+evince
+gv
+
+lightdm
+xrdp
+xfce4
+xfce4-terminal
+xubuntu-default-settings
+
+# Maybe also xfce4-mount-plugin? Doesn't seem to fix the problem with
+# not auto-mounting VBox shared folders.
