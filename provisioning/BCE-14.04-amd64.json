@@ -1,9 +1,9 @@
 {
   "builders": [
     {
-    "vm_name": "BCE-xubuntu-14.04-amd64",
+    "vm_name": "BCE-0.1",
     "disk_size": 16000,
-    "output_directory": "packer-ubuntu-14.04-amd64-virtualbox",
+    "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
     "format": "ova",
     "boot_command": [
@@ -44,9 +44,9 @@
       ]
     ],
     "guest_os_type": "Ubuntu_64",
-    "iso_checksum": "4d94f6111b8fe47da94396180ce499d8c0bb44f3",
+    "iso_checksum": "401c5f6666fe2879ac3a9a3247b487723410cf88",
     "iso_checksum_type": "sha1",
-    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
+    "iso_url": "http://releases.ubuntu.com/14.04.1/ubuntu-14.04.1-server-amd64.iso",
     "ssh_username": "oski",
     "ssh_password": "oski",
     "ssh_wait_timeout": "3000s",
