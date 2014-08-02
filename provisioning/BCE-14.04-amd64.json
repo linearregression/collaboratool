@@ -1,6 +1,16 @@
 {
   "builders": [
     {
+    "type": "amazon-ebs",
+    "access_key": "",
+    "secret_key": "",
+    "ami_name": "bce",
+    "instance_type": "m1.medium",
+    "region": "us-west-2",
+    "source_ami": "ami-f13e4dc1",
+    "ssh_username": "ubuntu"
+    },
+    {
     "vm_name": "BCE-0.1",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
@@ -57,7 +67,13 @@
     {
       "type": "file",
       "source": "dot-config",
-      "destination": "/home/oski/.config"
+      "override": {
+        "vmware-iso": {
+          "destination": "/home/oski/.config",
+        },
+        "amazon-ebs": {
+          "destination": "/home/ubuntu/.config"
+        }
     },
     {
       "type": "file",
@@ -68,7 +84,13 @@
       "type": "shell",
       "script": "bootstrap-bce.sh",
       "environment_vars": "BCE_PROVISION=BCE",
-      "execute_command": "echo 'oski' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+      "override": {
+        "vmware-iso": {
+          "execute_command": "echo 'oski' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+        },
+        "amazon-ebs": {
+          "execute_command": "echo 'ubuntu' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
+        }
     }
   ]
 }

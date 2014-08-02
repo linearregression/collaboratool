@@ -12,11 +12,6 @@ APT_GET="apt-get -q -y"
 # APT_GET="apt-get -qq -y"
 
 
-# XXX - Ryan: "apt-get install foo=1.0.2" can install a specific version of a
-# a package as long as it is available in the repository. But we'd have to
-# ask the *rutter maintainer to keep older packages or setup our own repo to
-# guarantee those packages would be available.
-
 msg="BCE: Updating apt cache..."
 echo $msg
 $APT_GET update > /dev/null && \
@@ -71,13 +66,14 @@ fi
 #    /etc/apt/sources.list.d/cran.list && \
 
 
-# apt-add-repository is included in software-properties-common which is
-# installed in the "Installing build utilities" step.
-msg="BCE: Installing R PPAs..." echo "$msg"
-# Prefer rrutter and c2d4u PPAs
-apt-add-repository -y ppa:marutter/rrutter && \
-apt-add-repository -y ppa:marutter/c2d4u && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+# XXX -  we are not currently installing R packages with apt
+# # apt-add-repository is included in software-properties-common which is
+# # installed in the "Installing build utilities" step.
+# msg="BCE: Installing R PPAs..." echo "$msg"
+# # Prefer rrutter and c2d4u PPAs
+# apt-add-repository -y ppa:marutter/rrutter && \
+# apt-add-repository -y ppa:marutter/c2d4u && \
+# ( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
 
 msg="BCE: Installing scientific packages..."
 echo "$msg"
