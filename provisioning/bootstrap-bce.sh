@@ -124,8 +124,7 @@ echo DONE: $msg || echo FAIL: $msg
 
 msg="BCE: Installing Python modules..."
 echo "$msg"
-pip install --upgrade -r /tmp/packages/python-requirements.txt \
-    2>/root/pip-err.log | tee /root/pip-out.log && \
+pip install --upgrade -r /tmp/packages/python-requirements.txt && \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc
 
