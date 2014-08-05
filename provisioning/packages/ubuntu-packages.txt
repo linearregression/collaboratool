@@ -1,12 +1,21 @@
+# Core Python
+
 python-dev
 python-pip
 python-setuptools
+# Much faster / easier than going the pip way
 python-gtk2-dev
+
+# Core R
 
 r-recommended
 
+# Core java
+
 default-jre
 default-jdk
+
+# Utilities / libs
 
 curl
 libcurl4-gnutls-dev
@@ -18,6 +27,8 @@ libssl-dev
 libxslt1-dev
 liblzma-dev
 
+# Document processing stuff
+
 pandoc
 fonts-mathjax
 texlive
@@ -25,6 +36,19 @@ texlive-latex-base
 # This is half a gigabyte
 # texlive-fonts-extra
 texlive-fonts-recommended
+# This is to make nbconvert to HTML work fully
+nodejs
+
+# Viewing and editing the web, documents
+
+firefox
+libreoffice
+xpdf
+evince
+gv
+
+# General purpose, lightweight text editor
+# Some of these plugins are probably not useful
 
 gedit
 gedit-plugins
@@ -32,18 +56,13 @@ gedit-developer-plugins
 gedit-r-plugin
 gedit-latex-plugin
 gedit-source-code-browser-plugin
-rabbitvcs-gedit
+
+# Minimal XFCE4 environment
 
 thunar-vcs-plugin
 thunar-archive-plugin
 thunar-media-tags-plugin
 gigolo
-
-firefox
-libreoffice
-xpdf
-evince
-gv
 
 lightdm
 xrdp

@@ -1,9 +1,13 @@
+Current questions
+-----------------
+
+Check: does kernel.org throttle us?
+We should set up a comprehensive test suite to make sure BCE is AOK.
+
+Double-check pycharm download
+
 Python dependencies
 -------------------
-
-### Ubuntu packages
-
-rabbitvcs pulls in Ubuntu ipython which we displace later with pip
 
 ### Python packages
 
