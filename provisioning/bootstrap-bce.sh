@@ -54,7 +54,7 @@ if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
     mount /dev/sr1 /mnt && \
     /mnt/VBoxLinuxAdditions.run -- --force
     # XXX We break logical chaining here, because it's never working!
-    umount /mnt && \
+    eject /mnt && \
     ( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
     #echo DONE: $msg || echo "FAIL (but not really?):" $msg
 fi
@@ -77,7 +77,11 @@ fi
 
 msg="BCE: Installing scientific packages..."
 echo "$msg"
-# This allows us to have comments in the packages file
+# The grep bit allows us to have comments in the packages file
+# We install no-recommends first, to avoid them getting pulled in by the other
+# installs
+$APT_GET install --no-install-recommends \
+    $(grep '^[^#]' /tmp/packages/ubuntu-packages-norecommends.txt) && \
 $APT_GET install $(grep '^[^#]' /tmp/packages/ubuntu-packages.txt) && \
 $APT_GET clean && \ # help avoid running out of disk space
 echo DONE: $msg  || echo FAIL: $msg
@@ -102,18 +106,28 @@ curl -L -O ${RSTUDIO_URL} && \
 dpkg -i $(basename ${RSTUDIO_URL}) && \
 ( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
 
+msg="BCE: Installing add-on R packages..."
+echo "$msg"
+Rscript -e "pkgs <- scan('/tmp/packages/R-packages.txt', what = 'character'); \
+install.packages(pkgs, repos = 'http://cran.cnr.berkeley.edu')" && \
+echo DONE: $msg || echo FAIL: $msg
+
+# Python stuff
+msg = "BCE: Downloading PyCharm to /opt"
+echo "$msg"
+PYCHARM_URL=http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
+curl -L -O ${RSTUDIO_URL} && \
+tar -C /opt -xzf pycharm-community-*.tar.gz && \
+chown oski:oski /opt/pycharm-community-* && \
+rm pycharm-community-*.tar.gz && \
+echo DONE: $msg || echo FAIL: $msg
+
 msg="BCE: Installing Python modules..."
 echo "$msg"
 pip install --upgrade -r /tmp/packages/python-requirements.txt \
     2>/root/pip-err.log | tee /root/pip-out.log && \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc
-
-msg="BCE: Installing add-on R packages..."
-echo "$msg"
-Rscript -e "pkgs <- scan('/tmp/packages/R-packages.txt', what = 'character'); \
-install.packages(pkgs, repos = 'http://cran.cnr.berkeley.edu')" && \
-echo DONE: $msg || echo FAIL: $msg
 
 msg="BCE: Setting Xfce4 as default X session"
 echo "$msg"
