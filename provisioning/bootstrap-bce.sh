@@ -113,10 +113,10 @@ install.packages(pkgs, repos = 'http://cran.cnr.berkeley.edu')" && \
 echo DONE: $msg || echo FAIL: $msg
 
 # Python stuff
-msg = "BCE: Downloading PyCharm to /opt"
+msg="BCE: Downloading PyCharm to /opt"
 echo "$msg"
 PYCHARM_URL=http://download.jetbrains.com/python/pycharm-community-3.4.1.tar.gz
-curl -L -O ${RSTUDIO_URL} && \
+curl -L -O ${PYCHARM_URL} && \
 tar -C /opt -xzf pycharm-community-*.tar.gz && \
 chown oski:oski /opt/pycharm-community-* && \
 rm pycharm-community-*.tar.gz && \
