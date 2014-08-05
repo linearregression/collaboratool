@@ -67,13 +67,12 @@
     {
       "type": "file",
       "source": "dot-config",
+      "destination": "/home/oski/.config",
       "override": {
-        "vmware-iso": {
-          "destination": "/home/oski/.config",
-        },
         "amazon-ebs": {
           "destination": "/home/ubuntu/.config"
         }
+      }
     },
     {
       "type": "file",
@@ -84,13 +83,12 @@
       "type": "shell",
       "script": "bootstrap-bce.sh",
       "environment_vars": "BCE_PROVISION=BCE",
+      "execute_command": "echo 'oski' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'",
       "override": {
-        "vmware-iso": {
-          "execute_command": "echo 'oski' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
-        },
         "amazon-ebs": {
           "execute_command": "echo 'ubuntu' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
         }
+      }
     }
   ]
 }
