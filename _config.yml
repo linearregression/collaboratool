@@ -1,8 +1,8 @@
 title: BCE
 tagline: "The Berkeley Computational Environment: A common compute environment for portable, reproducible data science"
-markdown: redcarpet
-pygments: true
-redcarpet:
+markdown: kramdown
+highlighter: pygments
+kramdown:
         extensions: ['smart']
 
 # This is the default format post.
