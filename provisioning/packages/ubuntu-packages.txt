@@ -6,6 +6,10 @@ python-setuptools
 # Much faster / easier than going the pip way
 python-gtk2-dev
 
+# Mostly for networkx
+
+graphviz
+
 # Core R
 
 r-recommended

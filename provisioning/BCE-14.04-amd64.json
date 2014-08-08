@@ -11,7 +11,7 @@
     "ssh_username": "ubuntu"
     },
     {
-    "vm_name": "BCE-0.1",
+    "vm_name": "BCE-0.2dev",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
