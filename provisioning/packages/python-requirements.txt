@@ -31,9 +31,12 @@ Flask==0.10.1
 geopy==0.99
 google-api-python-client==1.2
 ipythonblocks==1.6.1
+oauth==1.0.1
+oauth2==1.5.211
 pelican==3.3
 prettytable==0.7.2
 PyGithub==1.25.0
+pymongo==2.7.1
 queuelib==1.1.1
 Scrapy==0.22.2
 twitter==1.14.3

@@ -1,35 +1,12 @@
-# Core Python
+# Note - also need core-ubuntu-packages.txt
 
-python-dev
-python-pip
-python-setuptools
 # Much faster / easier than going the pip way
 python-gtk2-dev
-
-# Mostly for networkx
-
-graphviz
-
-# Core R
-
-r-recommended
 
 # Core java
 
 default-jre
 default-jdk
-
-# Utilities / libs
-
-curl
-libcurl4-gnutls-dev
-sqlite3
-libjpeg62
-libyaml-dev
-libzmq3-dev
-libssl-dev
-libxslt1-dev
-liblzma-dev
 
 # Document processing stuff
 
@@ -40,8 +17,6 @@ texlive-latex-base
 # This is half a gigabyte
 # texlive-fonts-extra
 texlive-fonts-recommended
-# This is to make nbconvert to HTML work fully
-nodejs
 
 # Viewing and editing the web, documents
 
