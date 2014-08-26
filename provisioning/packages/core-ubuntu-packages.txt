@@ -29,3 +29,4 @@ libzmq3-dev
 libssl-dev
 libxslt1-dev
 liblzma-dev
+libfreetype6-dev
