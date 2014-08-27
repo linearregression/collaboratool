@@ -5,7 +5,7 @@
     "ami_name": "BCE-0.1.2 {{timestamp}}",
     "instance_type": "m3.medium",
     "region": "us-west-1",
-    "ami-regions": "us-west-2",
+    "ami_regions": "us-west-2",
     "source_ami": "ami-01717d44",
     "ssh_username": "ubuntu",
     "tags": {
