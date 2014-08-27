@@ -172,7 +172,10 @@ echo "$msg"
 # Create a convenient place on the desktop for people to mount
 # their Shared Directories.
 sudo -u oski mkdir /home/oski/Desktop && \
-sudo -u oski ln -s /media /home/oski/Desktop/Shared && \
+# XXX - This may also be appropriate for VMware
+if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
+  sudo -u oski ln -s /media /home/oski/Desktop/Shared
+fi && \
 
 # This isn't necessary for the packer-installed files
 # .config is set up by the Packer file provisioner

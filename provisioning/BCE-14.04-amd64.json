@@ -79,6 +79,11 @@
     },
     {
       "type": "file",
+      "source": "setup_ipython_notebook.py",
+      "destination": "/home/oski/"
+    },
+    {
+      "type": "file",
       "source": "packages",
       "destination": "/tmp/packages"
     },

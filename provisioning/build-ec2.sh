@@ -4,4 +4,4 @@
 # See: http://mywiki.wooledge.org/BashFAQ/055
 # ps - Bash is just a crazy sorthand for some C code
 
-packer build -only=virtualbox-iso BCE-14.04-amd64.json  2>&1 | tee packer-vbox-out.log
+packer build -only=amazon-ebs BCE-14.04-amd64.json  2>&1 | tee packer-ec2-out.log
