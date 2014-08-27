@@ -2,16 +2,19 @@
   "builders": [
     {
     "type": "amazon-ebs",
-    "access_key": "",
-    "secret_key": "",
-    "ami_name": "bce",
-    "instance_type": "m1.medium",
-    "region": "us-west-2",
-    "source_ami": "ami-f13e4dc1",
-    "ssh_username": "ubuntu"
+    "ami_name": "BCE-0.1.2 {{timestamp}}",
+    "instance_type": "m3.medium",
+    "region": "us-west-1",
+    "ami-regions": "us-west-2",
+    "source_ami": "ami-01717d44",
+    "ssh_username": "ubuntu",
+    "tags": {
+      "OS_Version": "Ubuntu",
+      "Release": "Latest"
+    }
     },
     {
-    "vm_name": "BCE-0.2dev",
+    "vm_name": "BCE-0.1.2dev",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
