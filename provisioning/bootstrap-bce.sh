@@ -11,6 +11,12 @@ START_TIME=$(date '+%s')
 APT_GET="apt-get -q -y"
 # APT_GET="apt-get -qq -y"
 
+if [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
+    msg="BCE: waiting for cloud-init to finish..."
+    echo $msg
+    while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 1; done
+    echo DONE: $msg
+fi
 
 msg="BCE: Updating apt cache..."
 echo $msg
