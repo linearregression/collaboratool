@@ -114,11 +114,12 @@ msg="BCE: Create (or configure) oski user"
 echo "$msg"
 (
   if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
+    # oski is created in the debian-installer phase
     adduser oski vboxsf
-  elif [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
-    adduser oski --disabled-password
   else
-    adduser oski
+    # Avoid interactive prompts in user creation
+    adduser --disabled-password --gecos "" oski && \
+    echo oski:oski | chpasswd
   fi && \
   # Enable oski to login without a password
   adduser oski nopasswdlogin
