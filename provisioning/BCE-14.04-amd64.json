@@ -80,7 +80,12 @@
     {
       "type": "file",
       "source": "setup_ipython_notebook.py",
-      "destination": "/home/oski/"
+      "destination": "/home/oski/setup_ipython_notebook.py",
+      "override": {
+        "amazon-ebs": {
+          "destination": "/home/ubuntu/setup_ipython_notebook.py"
+        }
+      }
     },
     {
       "type": "file",

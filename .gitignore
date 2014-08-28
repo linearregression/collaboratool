@@ -2,3 +2,4 @@
 packer_cache/
 _site
 aws-creds.sh
+packer*.log
