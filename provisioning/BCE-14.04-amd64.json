@@ -2,7 +2,7 @@
   "builders": [
     {
     "type": "amazon-ebs",
-    "ami_name": "BCE-0.1.2 {{timestamp}}",
+    "ami_name": "BCE-0.1.3 {{timestamp}}",
     "instance_type": "m3.medium",
     "region": "us-west-1",
     "ami_regions": "us-west-2",
@@ -14,7 +14,7 @@
     }
     },
     {
-    "vm_name": "BCE-0.1.2dev",
+    "vm_name": "BCE-0.1.3dev",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
@@ -79,11 +79,11 @@
     },
     {
       "type": "file",
-      "source": "setup_ipython_notebook.py",
-      "destination": "/home/oski/setup_ipython_notebook.py",
+      "source": "setup_ipython_notebook.sh",
+      "destination": "/home/oski/setup_ipython_notebook.sh",
       "override": {
         "amazon-ebs": {
-          "destination": "/home/ubuntu/setup_ipython_notebook.py"
+          "destination": "/home/ubuntu/setup_ipython_notebook.sh"
         }
       }
     },

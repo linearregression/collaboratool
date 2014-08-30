@@ -139,9 +139,13 @@ echo "$msg"
 if [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
     # We are initially copying files to the (pre-existing) ubuntu user
     cp -r /home/ubuntu/.config /home/oski/.config && \
-    cp /home/ubuntu/setup_ipython_notebook.py /home/oski && \
+    chmod 755 /home/ubuntu/setup_ipython_notebook.sh && \
+    cp /home/ubuntu/setup_ipython_notebook.sh /home/oski && \
     chown -R oski:oski /home/oski
+else
+    chmod 755 /home/oski/setup_ipython_notebook.sh
 fi && \
+
 # XXX - This may also be appropriate for VMware
 # This provides obvious access to shared folders in VBox
 if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
