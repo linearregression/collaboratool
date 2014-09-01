@@ -11,6 +11,12 @@ START_TIME=$(date '+%s')
 APT_GET="apt-get -q -y"
 # APT_GET="apt-get -qq -y"
 
+if [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
+    msg="BCE: waiting for cloud-init to finish..."
+    echo $msg
+    while [ ! -f /var/lib/cloud/instance/boot-finished ]; do sleep 1; done
+    echo DONE: $msg
+fi
 
 msg="BCE: Updating apt cache..."
 echo $msg
@@ -75,7 +81,7 @@ fi
 # apt-add-repository -y ppa:marutter/c2d4u && \
 # ( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
 
-msg="BCE: Installing scientific packages..."
+msg="BCE: Installing Ubuntu packages..."
 echo "$msg"
 # The grep bit allows us to have comments in the packages file
 # We install no-recommends first, to avoid them getting pulled in by the other
@@ -85,6 +91,84 @@ $APT_GET install --no-install-recommends \
 $APT_GET install $(grep '^[^#]' /tmp/packages/ubuntu-packages.txt) && \
 $APT_GET clean && \ # help avoid running out of disk space
 echo DONE: $msg  || echo FAIL: $msg
+
+msg="BCE: Setting Xfce4 as default X session"
+echo "$msg"
+update-alternatives --set x-session-manager /usr/bin/xfce4-session && \
+( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+
+msg="BCE: Hide boot messages"
+echo "$msg"
+sed -i \
+	-e '/GRUB_HIDDEN_TIMEOUT=/ s/^#//' \
+	-e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/".*"/"quiet splash"/' \
+	/etc/default/grub && \
+( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+
+msg="BCE: Disable sudo password for those in the sudo group"
+echo "$msg"
+printf "%%sudo\tALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/nopasswd && \
+( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+
+# XXX - we should also set sensible defaults for gedit
+msg="BCE: Set a 4-space tabstop for nano"
+echo "$msg"
+sed -i -e '/# set tabsize 8/s/.*/set tabsize 4/' /etc/nanorc && \
+( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+
+msg="BCE: Create (or configure) oski user"
+echo "$msg"
+(
+  if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
+    # oski is created in the debian-installer phase
+    adduser oski vboxsf
+  else
+    # Avoid interactive prompts in user creation
+    adduser --disabled-password --gecos "" oski && \
+    echo oski:oski | chpasswd
+  fi && \
+  # Enable oski to login without a password
+  adduser oski nopasswdlogin
+) && \
+( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
+
+msg="BCE: Configure oski (and other) desktops"
+echo "$msg"
+# Create a convenient place on the desktop for people to mount
+# their Shared Directories.
+if [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
+    # We are initially copying files to the (pre-existing) ubuntu user
+    cp -r /home/ubuntu/.config /home/oski/.config && \
+    chmod 755 /home/ubuntu/setup_ipython_notebook.sh && \
+    cp /home/ubuntu/setup_ipython_notebook.sh /home/oski && \
+    chown -R oski:oski /home/oski
+else
+    chmod 755 /home/oski/setup_ipython_notebook.sh
+fi && \
+
+# XXX - This may also be appropriate for VMware
+# This provides obvious access to shared folders in VBox
+if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
+  sudo -u oski mkdir /home/oski/Desktop && \
+  sudo -u oski ln -s /media /home/oski/Desktop/Shared
+fi && \
+
+echo DONE: $msg || echo FAIL: $msg
+
+# Automatically login oski at boot
+# XXX - Is there a way to get oski listed in the login screen (it displays guest
+# user if you log out)
+
+if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
+    msg="BCE: Automatically login oski at boot"
+    echo "$msg"
+    printf "[SeatDefaults]\nautologin-user=oski\nautologin-user-timeout=0\n" >> \
+	/etc/lightdm/lightdm.conf.d/20-BCE.conf && \
+	#/usr/lib/lightdm/lightdm-set-defaults --autologin oski
+    echo DONE: $msg || echo FAIL: $msg
+fi
+
+
 
 # Google Chrome
 msg="BCE: Installing google chrome..."
@@ -127,72 +211,6 @@ echo "$msg"
 pip install --upgrade -r /tmp/packages/python-requirements.txt && \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc
-
-msg="BCE: Setting Xfce4 as default X session"
-echo "$msg"
-update-alternatives --set x-session-manager /usr/bin/xfce4-session && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
-
-msg="BCE: Hide boot messages"
-echo "$msg"
-sed -i \
-	-e '/GRUB_HIDDEN_TIMEOUT=/ s/^#//' \
-	-e '/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/".*"/"quiet splash"/' \
-	/etc/default/grub && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
-
-msg="BCE: Disable sudo password for those in the sudo group"
-echo "$msg"
-printf "%%sudo\tALL=(ALL:ALL) NOPASSWD: ALL\n" > /etc/sudoers.d/nopasswd && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
-
-# XXX - we should also set sensible defaults for gedit
-msg="BCE: Set a 4-space tabstop for nano"
-echo "$msg"
-sed -i -e '/# set tabsize 8/s/.*/set tabsize 4/' /etc/nanorc && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
-
-msg="BCE: Create oski user"
-echo "$msg"
-(
-  if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
-    adduser oski vboxsf
-  elif [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
-    adduser oski --disabled-password
-  else 
-    adduser oski
-  fi && \
-  # Enable oski to login without a password
-  adduser oski nopasswdlogin
-) && \
-( echo DONE: $msg ; etckeeper commit "$msg" ) || echo FAIL: $msg
-
-msg="BCE: Configure oski desktop"
-echo "$msg"
-# Create a convenient place on the desktop for people to mount
-# their Shared Directories.
-sudo -u oski mkdir /home/oski/Desktop && \
-sudo -u oski ln -s /media /home/oski/Desktop/Shared && \
-
-# This isn't necessary for the packer-installed files
-# .config is set up by the Packer file provisioner
-# chown -R oski:oski /home/oski/.config
-echo DONE: $msg || echo FAIL: $msg
-
-# Automatically login oski at boot
-# XXX - Is there a way to get oski listed in the login screen (it displays guest
-# user if you log out)
-
-if [ "${PACKER_BUILDER_TYPE}" == "virtualbox-iso" ]; then
-    msg="BCE: Automatically login oski at boot"
-    echo "$msg"
-    printf "[SeatDefaults]\nautologin-user=oski\nautologin-user-timeout=0\n" >> \
-	/etc/lightdm/lightdm.conf.d/20-BCE.conf && \
-	#/usr/lib/lightdm/lightdm-set-defaults --autologin oski
-    echo DONE: $msg || echo FAIL: $msg
-fi
-
-
 
 # Clean up the image before we export it
 $APT_GET clean
