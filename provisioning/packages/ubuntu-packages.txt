@@ -12,6 +12,7 @@ default-jdk
 
 pandoc
 fonts-mathjax
+texinfo
 texlive
 texlive-latex-base
 # This is half a gigabyte
