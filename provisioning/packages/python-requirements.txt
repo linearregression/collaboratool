@@ -1,47 +1,43 @@
+# **< = requires package ; > = pulls in**
+#
+#  - boilerpipe < default-jre default-jdk
+#  - boilerpipe > JPype1 charade
+#  - rpy2 < liblzma-dev
+#  - pyyaml < libyaml-dev
+#  - pandas > dateutil pytz numpy
+#  - ipython > tornado pyparsing nose backports.ssl-match-hostname
+#  - sphinx > Pygments docutils Jinja2 markupsafe
+#  - scrapy > Twisted w3lib queuelib cssselect
+#  - scrapy < libxslt1-dev libssl-dev
+#  - flask > Werkzeug itsdangerous
+#  - ipythonblocks < ez_setup
+#  - seaborn < patsy
+#  - seaborn > husl moss statsmodels
+#  - ipython notebook < pyzmq libzmq3-dev
+
+# Installed by python-setuptools package, right? -DJC
+# ez-setup==0.9
+
+# Not sure this will work
+-r core-python-requirements.txt
+
 apiclient==1.0.2
-BeautifulSoup==3.2.1
 boilerpipe==1.2.0.0
 cluster==1.1.2
-Cython==0.20.2
 envoy==0.0.2
-ez-setup==0.9
 Facebook==0.0
 feedparser==5.1.3
 Flask==0.10.1
 geopy==0.99
 google-api-python-client==1.2
-ipython==2.1.0
 ipythonblocks==1.6.1
-Jinja2==2.7.3
-lxml==3.3.5
-Markdown==2.4.1
-matplotlib==1.3.1
-networkx==1.9
-nltk==2.0.4
-nose==1.3.3
-numpy==1.8.1
 oauth==1.0.1
 oauth2==1.5.211
-pandas==0.14.0
-patsy==0.2.1
 pelican==3.3
 prettytable==0.7.2
 PyGithub==1.25.0
 pymongo==2.7.1
-pytest==2.5.2
-PyYAML==3.11
-pyzmq==14.3.1
 queuelib==1.1.1
-readline==6.2.4.1
-requests==2.3.0
-rpy2==2.4.2
-scikit-learn==0.14.1
-scipy==0.14.0
 Scrapy==0.22.2
-seaborn==0.3.1
-sklearn-pandas==0.0.9
-Sphinx==1.2.2
 twitter==1.14.3
 twitter-text-py==2.0.2
-virtualenv==1.11.6
-prettyplotlib==0.1.7

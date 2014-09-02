@@ -1,0 +1,32 @@
+# Packages required by the core python and R packages
+
+## Core Python
+
+python-dev
+python-pip
+# This is a requirement of python-pip
+# python-setuptools
+
+# This is to make nbconvert to HTML work fully
+nodejs
+
+## Mostly for networkx
+
+graphviz
+
+## Core R
+
+r-recommended
+
+# Utilities / libs
+
+curl
+libcurl4-gnutls-dev
+sqlite3
+libjpeg62
+libyaml-dev
+libzmq3-dev
+libssl-dev
+libxslt1-dev
+liblzma-dev
+libfreetype6-dev
