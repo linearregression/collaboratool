@@ -7,14 +7,15 @@ title: Using VirtualBox
   * Download and install VirtualBox from the [VirtualBox
     website](https://www.virtualbox.org/wiki/Downloads). This is the tool the
     runs the virtual machine for you.
-  * Download the BCE VM in the form of an [OVA file](http://scf.berkeley.edu/bce/BCE-0.1.1.ova).
-  * Open VirtualBox and import the BCE-0.1.1.ova file you just
-    downloaded by going to "File->Import Appliance" and then selecting the .ova
-    file from wherever you downloaded it to (possible 'Downloads' in your home
-    directory on the machine).
+  * Download the BCE VM in the form of an [OVA
+    file](https://berkeley.box.com/s/y04d3p41eau1cz97uusf).
+  * Open VirtualBox and import the BCE-0.1.3.ova file you just downloaded by
+    going to "File->Import Appliance" and then selecting the .ova file from
+    wherever you downloaded it to (possible 'Downloads' in your home directory
+    on the machine).
   * Wait a few minutes...
-  * Start the virtual machine by clicking on the tab for
-    "BCE-0.1.1" on the left side and then clicking "Start" at the
+  * Start the virtual machine by clicking on the tab for "BCE-0.1.3" (or
+    whatever you've named it) on the left side and then clicking "Start" at the
     top. This will start a virtual Linux computer within your own machine. After
     a few seconds you should see black screen and then soon you'll see the
     desktop of the VM.
