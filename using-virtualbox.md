@@ -53,7 +53,7 @@ instructions](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_L
     runs the virtual machine for you.
   * Download the BCE VM in the form of an [OVA
     file](https://berkeley.box.com/s/y04d3p41eau1cz97uusf).
-  * Open VirtualBox, go to File > Import appliance, and then select the .ova file you just downloaded (possibly located in the 'Downloads' folder in your home directory.
+  * Open VirtualBox, go to File > Import appliance, and then select the .ova file you just downloaded (possibly located in the "Downloads" folder in your home directory).
   * Wait a few minutes...
   * Start the virtual machine by clicking on the tab for "BCE-*version*" (or
 	whatever you've named it) on the left side and then clicking "Start" at
@@ -91,13 +91,13 @@ that you can access the files on your computer from the VM. Do the following:
     pops up.
   * Once the VM is running again, click on the "Shared" folder on the desktop.
     You should see the folder "sf_Documents" (or whatever the folder name you
-    selected was, in place of 'Documents'). You can drag and drop files to
+    selected was, in place of "Documents"). You can drag and drop files to
     manipulate them.
   * Alternatively, from the Terminal, you can also see the directory by doing
     "cd ~/Desktop/shared/sf_Documents" and then "ls" will show you the files.
     Be careful: unless you selected "read only" at the same time as "make
-    permanent", any changes to the shared folder on the VM affects the folder in
-    the 'real world', namely your computer.
+	permanent", any changes to the shared folder on the VM affects the folder
+	in the *real world*, namely your computer.
 
 ### Enabling Virtualization within your VM
 
