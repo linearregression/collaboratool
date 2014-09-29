@@ -42,7 +42,7 @@ instructions](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_L
 	These can be in under the headings **Processor**, **Chipset**, or
 	**Northbridge**.
   * Enable virtualization; the setting may be called **VT-x**, **AMD-V**,
-	**SVM**, or **Vanderpool** Enable **Intel VT-d** or **AMD IOMMU** if the
+	**SVM**, or **Vanderpool**. Enable **Intel VT-d** or **AMD IOMMU** if the
 	options are available.
   * Save your changes and reboot.
 
@@ -52,7 +52,7 @@ instructions](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_L
     website](https://www.virtualbox.org/wiki/Downloads). This is the tool the
     runs the virtual machine for you.
   * Download the BCE VM in the form of an [OVA
-    file](https://berkeley.box.com/s/y04d3p41eau1cz97uusf).
+    file](http://scf.berkeley.edu/bce/BCE-0.1.4.ova).
   * Open VirtualBox, go to File > Import appliance, and then select the .ova file you just downloaded (possibly located in the "Downloads" folder in your home directory).
   * Wait a few minutes...
   * Start the virtual machine by clicking on the tab for "BCE-*version*" (or
