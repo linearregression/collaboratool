@@ -4,11 +4,11 @@ title: Using BCE
 ---
 ### Using the existing BCE VM
 
-If you'd like to use the VM as a student, researcher, or instructor, our goal is to make this easy for you.
+Our goal is to make this easy for students, researchers, and instructors.
 
-If you're using VirtualBox, [follow these instructions](using-virtualbox.html).
+[In VirtualBox](using-virtualbox.html)
 
-If you'd like to use the VM on Amazon's EC2 cloud platform, [follow these instructions](using-ec2.html).
+[In Amazon EC2](using-ec2.html)
 
 ### Creating (and modifying) the BCE VM
 
