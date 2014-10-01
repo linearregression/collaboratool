@@ -64,3 +64,4 @@ twitter==1.14.3
 twitter-text-py==2.0.2
 virtualenv==1.11.6
 prettyplotlib==0.1.7
+Pillow==2.5.3

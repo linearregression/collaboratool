@@ -24,7 +24,15 @@ default-jdk
 curl
 libcurl4-gnutls-dev
 sqlite3
+
+# libjpeg8 libraries (including -dev, and there are several) are pulled in by R
+# Why do we need libjpeg62? Esp. if we're not pulling in the -dev libraries?
 libjpeg62
+
+# For more complete Pillow (the new PIL) support
+libtiff5-dev
+libwebp-dev
+
 libyaml-dev
 libzmq3-dev
 libssl-dev
