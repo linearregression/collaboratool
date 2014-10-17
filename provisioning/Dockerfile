@@ -1,17 +1,17 @@
-# Typical use:
-#   docker run -d -p 8787:8787 -p 2200:22 -p 8888:8888 -e USER=<username> -e PASSWORD=<password> --name bce cboettig/bce
-# If using boot2docker, loop up IP. On a linux, your IP is localhost.
+# Usage notes: 
+# Launch the image from any platform that has docker installed: 
 # 
-# Connect to RStudio-server: go to http://<ip-address>:8787
-# and log in with the user and password given.
-#
-# Connect to an ssh session: 
-#     ssh -p 2200 username@localhost 
-# (Note, no root privileges)
-#
-# Connect to an ipython session: go to http://<ip-address>:8888
+#     docker run -d -p 8787:8787 -p 2200:22 -p 8888:8888 -e USER=<username> -e PASSWORD=<password> --name bce cboettig/bce
+# 
+# If using boot2docker, look up `<ip-address>` with command: `boot2docker ip`. On a linux, `<ip-address>` is `localhost`.
+#  
+# - Connect to RStudio-server: go to `http://<ip-address>:8787` and log in with the user and password given.
+# - Connect to an ssh session:  `ssh -p 2200 username@localhost`.  (Note, no root privileges)
+# - Connect to an ipython session: go to `http://<ip-address>:8888`.  
 # (Currently unsecured, do not expose an ipython port on a public host/cloud machine)
 # 
+
+
 
 FROM ubuntu:14.04 
 MAINTAINER Carl Boettiger <cboettig@ropensci.org>
