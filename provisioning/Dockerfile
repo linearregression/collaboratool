@@ -54,11 +54,11 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted 
    sudo \
 && wget -q http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \ 
 && dpkg -i libssl0.9.8_0.9.8o-4squeeze14_amd64.deb && rm libssl0.9.8_0.9.8o-4squeeze14_amd64.deb \
-&& VER=$(wget -qO- https://s3.amazonaws.com/rstudio-server/current.ver) \
-|| VER=${VER} 
-RUN wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
+&& (wget -q https://s3.amazonaws.com/rstudio-server/current.ver -O currentVersion.txt \
+&& VER=$(cat currentVersion.txt) \
+&& wget -q http://download2.rstudio.org/rstudio-server-${VER}-amd64.deb \
 && dpkg -i rstudio-server-${VER}-amd64.deb \
-&& rm rstudio-server-*-amd64.deb \
+&& rm rstudio-server-*-amd64.deb currentVersion.txt) \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc /usr/local/bin \
 && ln -s /usr/lib/rstudio-server/bin/pandoc/pandoc-citeproc /usr/local/bin
 
