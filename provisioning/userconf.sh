@@ -6,8 +6,6 @@ PASSWORD=${PASSWORD:=rstudio}
 EMAIL=${EMAIL:=rstudio@example.com}
 ## Configure user account name and password (used by rstudio)
 useradd -m $USER && echo "$USER:$PASSWORD" | chpasswd
-## Give user access over their own home directory
-chown -R $USER:$USER /home/$USER
 ## Let user write to /usr/local/lib/R/site.library
 addgroup $USER staff
 
