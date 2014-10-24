@@ -2,7 +2,7 @@
   "builders": [
     {
     "type": "amazon-ebs",
-    "ami_name": "BCE-0.1.4 {{timestamp}}",
+    "ami_name": "BCE-0.1.6 {{timestamp}}",
     "instance_type": "m3.medium",
     "region": "us-west-1",
     "ami_regions": "us-west-2",
@@ -14,7 +14,7 @@
     }
     },
     {
-    "vm_name": "BCE-0.1.4dev",
+    "vm_name": "BCE-0.1.6",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
