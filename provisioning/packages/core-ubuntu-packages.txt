@@ -23,7 +23,15 @@ r-recommended
 curl
 libcurl4-gnutls-dev
 sqlite3
+
+# libjpeg8 libraries (including -dev, and there are several) are pulled in by R
+# RStudio still requires libjpeg62
 libjpeg62
+
+# For more complete Pillow (the new PIL) support
+libtiff5-dev
+libwebp-dev
+
 libyaml-dev
 libzmq3-dev
 libssl-dev

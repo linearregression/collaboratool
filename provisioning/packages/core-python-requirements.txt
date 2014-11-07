@@ -31,3 +31,4 @@ tornado==4.0.1
 virtualenv==1.11.6
 # Not available in conda
 prettyplotlib==0.1.7
+Pillow==2.5.3
