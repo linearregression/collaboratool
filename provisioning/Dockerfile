@@ -1,4 +1,15 @@
-# Usage notes: 
+#
+# Build notes: from the provisioning/ directory, run:
+#     docker build -t bce .
+#
+# Required files: (must be in working directory with Dockerfile)
+# - userconf.sh (Docker only)
+# - supervisord.conf (Docker only)
+# - bootstrap-bce.sh (Generic BCE bash script)
+# - setup_ipython_notebook.sh (Generic BCE scipt, does what it says)
+#
+# Usage notes:
+# 
 # Launch the image from any platform that has docker installed: 
 # 
 #     docker run -d -p 8787:8787 -p 2200:22 -p 8888:8888 -e USER=<username> -e PASSWORD=<password> --name bce cboettig/bce
