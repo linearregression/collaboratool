@@ -15,53 +15,59 @@
 #  - seaborn > husl moss statsmodels
 #  - ipython notebook < pyzmq libzmq3-dev
 
-apiclient==1.0.2
-BeautifulSoup==3.2.1
-boilerpipe==1.2.0.0
-cluster==1.1.2
-Cython==0.20.2
-envoy==0.0.2
-ez-setup==0.9
-Facebook==0.0
-feedparser==5.1.3
-Flask==0.10.1
-geopy==0.99
-google-api-python-client==1.2
-ipython==2.2.0
-ipythonblocks==1.6.1
-Jinja2==2.7.3
-lxml==3.3.5
-Markdown==2.4.1
-matplotlib==1.3.1
+# Note that for a number of packages below, we don't specify versions. These are
+# unlikely to be used in core examples, and generally the benefit of having more
+# recent code is high
+
+apiclient
+BeautifulSoup
+boilerpipe
+cluster
+Cython>=0.21,<0.22
+envoy
+ez-setup
+Facebook
+feedparser
+Flask
+geopy
+google-api-python-client
+ipython>=2,<=3
+ipythonblocks
+Jinja2
+lxml
+Markdown
+matplotlib>=1.3,<1.5
 # A < 2.0 version of pyparsing is necessary for pydot to work in py2.7
-pyparsing==1.5.7
+# But matplotlib requires 2+. So, we use the (not broken) apt packages
+# pyparsing==1.5.7
 networkx==1.9
-nltk==2.0.4
-nose==1.3.3
-numpy==1.8.1
-oauth==1.0.1
-oauth2==1.5.211
-pandas==0.14.1
-patsy==0.2.1
-pelican==3.3
-prettytable==0.7.2
-PyGithub==1.25.0
-pymongo==2.7.1
-pytest==2.5.2
-PyYAML==3.11
-pyzmq==14.3.1
-queuelib==1.1.1
-readline==6.2.4.1
-requests==2.3.0
-rpy2==2.4.2
-scikit-learn==0.14.1
-scipy==0.14.0
+nltk>=2.0,<2.1
+nose
+numpy>1.8,<1.9
+oauth
+oauth2
+pandas>=0.15,<0.16
+patsy>=0.3,<0.4
+# Pelican doesn't keep old versions on PyPI!
+pelican
+prettytable
+PyGithub
+pymongo
+pytest
+PyYAML
+pyzmq
+queuelib
+readline
+requests
+rpy2>=2.4,<2.5
+scikit-learn>=0.15.2,<0.16
+scipy>=0.14,<0.15
 Scrapy==0.22.2
-seaborn==0.3.1
-sklearn-pandas==0.0.9
-Sphinx==1.2.2
-twitter==1.14.3
-twitter-text-py==2.0.2
-virtualenv==1.11.6
-prettyplotlib==0.1.7
-Pillow==2.5.3
+seaborn
+sklearn-pandas
+Sphinx
+twitter
+twitter-text-py
+virtualenv
+prettyplotlib
+Pillow>=2.5,<2.6
