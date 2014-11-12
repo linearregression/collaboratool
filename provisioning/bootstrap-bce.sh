@@ -83,6 +83,8 @@ fi
 
 msg="BCE: Installing Ubuntu packages..."
 echo "$msg"
+# This ensures we get security updates, etc.
+$APT_GET dist-upgrade && \
 # The grep bit allows us to have comments in the packages file
 # We install no-recommends first, to avoid them getting pulled in by the other
 # installs

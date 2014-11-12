@@ -14,7 +14,7 @@
     }
     },
     {
-    "vm_name": "BCE-0.1.6",
+    "vm_name": "BCE-0.1.7",
     "disk_size": 16000,
     "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
     "type": "virtualbox-iso",
