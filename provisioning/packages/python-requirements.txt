@@ -31,7 +31,7 @@ feedparser
 Flask
 geopy
 google-api-python-client
-ipython>=2,<=3
+ipython[notebook]>=2,<3
 ipythonblocks
 Jinja2
 lxml
@@ -60,11 +60,12 @@ PyYAML
 pyzmq
 queuelib
 readline
-# Requests 2.4.3 breaks pip, 2.3.0 was OK
-# But apt's python-pip installs requests 2.2.1, so let's leave that
-# Going forwards, I think we should perhaps install pip using the script:
+# Requests 2.4.3 breaks Ubuntu's python-pip (2.3.0 was OK)
+# Another note, apt's python-pip installs requests 2.2.1
+# Going forwards, however, it's hard to prevent installation of newer versions
+# of requests. So, we'll install pip using the script:
 # https://bootstrap.pypa.io/get-pip.py
-# requests>=2.3,<2.4
+requests
 rpy2>=2.4,<2.5
 scikit-learn>=0.15.2,<0.16
 scipy>=0.14,<0.15

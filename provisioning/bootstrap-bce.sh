@@ -210,6 +210,9 @@ echo DONE: $msg || echo FAIL: $msg
 
 msg="BCE: Installing Python modules..."
 echo "$msg"
+# We install pip directly from pypa to avoid conflicts with requests
+curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && \
+python /tmp/get-pip.py && \
 pip install --upgrade -r /tmp/packages/python-requirements.txt && \
 echo DONE: $msg || echo FAIL: $msg
 # Note, pip won't change /etc

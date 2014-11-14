@@ -1,7 +1,8 @@
 # Core Python
 
 python-dev
-python-pip
+# Ubuntu's pip conflicts with newer requests, we install with get-pip.py
+# python-pip
 python-setuptools
 # Much faster / easier than going the pip way
 python-gtk2-dev
