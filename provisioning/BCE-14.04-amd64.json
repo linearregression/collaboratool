@@ -11,9 +11,9 @@
       "tags": {
           "OS_Version": "Ubuntu",
           "Release": "Latest"
-        }
-      },
-      {
+      }
+    },
+    {
       "vm_name": "BCE-0.1.7",
       "disk_size": 16000,
       "output_directory": "packer-ubuntu-14.04.1-amd64-virtualbox",
@@ -96,7 +96,8 @@
     {
       "type": "shell",
       "script": "bootstrap-bce.sh",
-      "environment_vars": "BCE_PROVISION=BCE",
+      "environment_vars": ["DEBIAN_PRIORITY=high",
+                           "DEBIAN_FRONTEND=noninteractive"],
       "execute_command": "echo 'oski' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'",
       "override": {
         "amazon-ebs": {
