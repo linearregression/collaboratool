@@ -36,6 +36,14 @@ git config --global user.email "bce@lists.berkeley.edu" && \
 etckeeper init && \
 echo DONE: $msg || echo FAIL: $msg
 
+if [ "${PACKER_BUILDER_TYPE}" == "amazon-ebs" ]; then
+    msg="BCE: symlinking /etc/init.d/nfs to /etc/init.d/nfs-kernel-server..."
+    echo $msg
+    $APT_GET install nfs-kernel-server
+    ln -s /etc/init.d/nfs-kernel-server /etc/init.d/nfs
+    ln -s /lib/init/upstart-job /etc/init.d/portmap
+fi
+
 echo "BCE: Installing build utilities..."
 # This is more robust - redundancy is not a problem!
 $APT_GET install build-essential dkms xserver-xorg dmidecode curl \
