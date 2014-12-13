@@ -18,7 +18,7 @@ virtualization support:
     update](http://support.apple.com/kb/TS2744).
   * On Windows,
     [download](http://www.microsoft.com/en-us/download/details.aspx?id=592) and
-    run a Microsoft utility.
+    run a Microsoft utility. You can also download utilities to [check if your CPU is capable of virtualization](http://www.technorms.com/8208/check-if-processor-supports-virtualization), if not enabled.
   * On Linux, open a terminal window and run:
 
 	```egrep -q 'vmx|svm' /proc/cpuinfo && echo yes || echo no```
