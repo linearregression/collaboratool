@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Overview
+redirect_to:
+  - http://bce.berkeley.edu
 ---
 ### What is BCE?
 

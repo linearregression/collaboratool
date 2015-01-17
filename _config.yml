@@ -4,6 +4,8 @@ markdown: kramdown
 highlighter: pygments
 kramdown:
         extensions: ['smart']
+gems:
+  - jekyll-redirect-from
 
 # This is the default format post.
 # For more see: http://jekyllrb.com/docs/permalinks/
